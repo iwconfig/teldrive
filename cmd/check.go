@@ -448,7 +448,7 @@ func runCheckCmd(cmd *cobra.Command, cfg *config.ServerCmdConfig) {
 	go pw.Render()
 
 	for _, id := range channelIds {
-
+		id := id
 		g.Go(func() error {
 
 			client, err := tgc.AuthClient(ctx, &cfg.TG, session.Session, middlewares...)
