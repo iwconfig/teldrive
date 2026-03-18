@@ -52,6 +52,9 @@ func NewRun() *cobra.Command {
 			if err := loader.Load(cmd, &cfg); err != nil {
 				return err
 			}
+			if cmd.Flags().Changed("tg-ntp-server") && !cmd.Flags().Changed("tg-ntp") {
+				cfg.TG.Ntp = true
+			}
 			if err := loader.Validate(&cfg); err != nil {
 				return err
 			}
